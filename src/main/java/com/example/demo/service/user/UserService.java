@@ -1,8 +1,8 @@
 package com.example.demo.service.user;
 
-import com.example.demo.dto.UserDTO;
-import com.example.demo.dto.UserResponseDTO;
+import com.example.demo.dto.user.UserDTO;
+import com.example.demo.dto.user.UserResponseNoPassDTO;
 
 public interface UserService {
-    UserResponseDTO createUser(UserDTO userDTO);
+    UserResponseNoPassDTO createUser(UserDTO userDTO);
 }

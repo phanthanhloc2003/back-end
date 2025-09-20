@@ -1,7 +1,7 @@
 package com.example.demo.service.user;
 
-import com.example.demo.dto.UserDTO;
-import com.example.demo.dto.UserResponseDTO;
+import com.example.demo.dto.user.UserDTO;
+import com.example.demo.dto.user.UserResponseNoPassDTO;
 import com.example.demo.entity.user.User;
 import com.example.demo.exception.EmailAlreadyExistsException;
 import com.example.demo.repository.user.UserRepository;
@@ -14,7 +14,7 @@ public class UserServiceImpl implements  UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     @Override
-    public UserResponseDTO createUser(UserDTO userDTO) {
+    public UserResponseNoPassDTO createUser(UserDTO userDTO) {
      if(userRepository.existsByEmail(userDTO.getEmail())) {
          throw new EmailAlreadyExistsException("Email already exists");
      }
@@ -30,7 +30,7 @@ public class UserServiceImpl implements  UserService {
 
         User savedUser = userRepository.save(user);
 
-        return UserResponseDTO.builder()
+        return UserResponseNoPassDTO.builder()
                 .id(savedUser.getId())
                 .fullName(savedUser.getFullName())
                 .email(savedUser.getEmail())
